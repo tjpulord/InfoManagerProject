@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_size">40dp</dimen>
+    <dimen name="image_large">100dp</dimen>
+    <dimen name="image_small">20dp</dimen>
+
+    <dimen name="mini_size">4dp</dimen>
+    <dimen name="margin_size">8dp</dimen>
+    <dimen name="margin_size_sm">12dp</dimen>
+    <dimen name="margin_size_middle">16dp</dimen>
+    <dimen name="margin_size_large">20dp</dimen>
+    <dimen name="margin_size_xl">24dp</dimen>
+    <dimen name="margin_size_xxl">32dp</dimen>
+</resources>
