@@ -162,9 +162,10 @@
 
         <ImageView
             android:id="@+id/iv_erweima"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:layout_width="350dp"
+            android:layout_height="440dp"
             android:visibility="gone"
+            android:background="@color/grgray"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat="@mipmap/ic_launcher"

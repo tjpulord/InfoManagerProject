@@ -3,13 +3,11 @@ package com.manager.info.dell.infomanagerapp;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.manager.info.dell.infomanagerapp.databinding.ActivityCreateInfoBinding;
 import com.manager.info.dell.infomanagerapp.db.DBInterface;
 import com.manager.info.dell.infomanagerapp.db.InfoEntity;
@@ -31,20 +29,23 @@ public class CreateInfoActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_info);
 
-//        initView();
+        initView();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        initView();
+//        initView();
+        updateInfoData();
+    }
+
+    private void updateInfoData() {
+        infoEntityList = DBInterface.instance().queryAllInformations();
+        infoAdapter.setNewData(infoEntityList);
     }
 
     private void initView() {
-        infoEntityList = DBInterface.instance().queryAllInformations();
-        if (infoEntityList == null) {
-            infoEntityList = new ArrayList<>();
-        }
+        infoEntityList = new ArrayList<>();
         infoAdapter = new DeviceInfoAdapter(R.layout.item_info_show, infoEntityList);
         binding.rcyInfoList.setLayoutManager(new LinearLayoutManager(this));
         binding.rcyInfoList.setAdapter(infoAdapter);
@@ -58,14 +59,14 @@ public class CreateInfoActivity extends BasicActivity {
                 InfoEntity entity = infoEntityList.get(i);
                 Bundle bundle = new Bundle();
                 bundle.putString(ConstantUtil.INFO_SN, entity.getSn());
-                jumpActivity(InfoDetailActivity.class, bundle);
+                jumpActivity(getApplicationContext(), InfoDetailActivity.class, bundle);
             }
         });
 
         InjectUtils.clicks(binding.btnAddFile, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                jumpActivity(AddInfoActivity.class);
+                jumpActivity(getApplicationContext(), AddInfoActivity.class);
             }
         });
     }

@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
             app:layout_constraintLeft_toRightOf="@+id/textView6" />
         <TextView

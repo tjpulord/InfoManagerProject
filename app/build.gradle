@@ -49,6 +49,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.1'
     compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'cn.yipianfengye.android:zxing-library:1.8'
+    compile 'cn.yipianfengye.android:zxing-library:2.0'
     testCompile 'junit:junit:4.12'
 }

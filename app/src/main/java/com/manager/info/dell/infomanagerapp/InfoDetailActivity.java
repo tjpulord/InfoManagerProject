@@ -2,7 +2,6 @@ package com.manager.info.dell.infomanagerapp;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -57,7 +56,7 @@ public class InfoDetailActivity extends BasicActivity {
             public void call(Void aVoid) {
                 Bundle bundle = new Bundle();
                 bundle.putString(ConstantUtil.INFO_SN, sn);
-                jumpActivity(AddInfoActivity.class, bundle);
+                jumpActivity(getApplicationContext(), AddInfoActivity.class, bundle);
             }
         });
 

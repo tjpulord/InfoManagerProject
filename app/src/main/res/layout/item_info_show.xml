@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:id="@+id/tv_info_id"
         android:text="设备编码"
         android:layout_margin="8dp"/>
@@ -22,7 +22,7 @@
         android:id="@+id/tv_manufacture"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:text="制造商"
         android:layout_margin="8dp"/>
 </LinearLayout>
