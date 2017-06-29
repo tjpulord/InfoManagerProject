@@ -25,6 +25,7 @@ import rx.functions.Action1;
 public class InfoDetailActivity extends BasicActivity {
     private ActivityInfoDetailBinding binding;
     private String sn;
+    private InfoEntity infoEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class InfoDetailActivity extends BasicActivity {
             }
         });
 
-        InjectUtils.clicks(binding.btnErweima, new Action1<Void>() {
+        InjectUtils.clicks(binding.ibtnErweima, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
                 Bitmap bitmap = generateBitmap("http://localhost/sample.php?sn="+sn, 200, 200);
@@ -70,16 +71,26 @@ public class InfoDetailActivity extends BasicActivity {
                 }
             }
         });
+
+        InjectUtils.clicks(binding.btnDel, new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                DBInterface.instance().deleteInfoByUniqueId(infoEntity.getId());
+                ToastUtil.showToast(String.format("已删除信息：%s(%s)", infoEntity.getName(), infoEntity.getSn()));
+                onBackPressed();
+            }
+        });
     }
 
     private void initInfoData() {
         if (sn == null) {
             binding.btnEdit.setEnabled(false);
-            binding.btnErweima.setEnabled(false);
+            binding.ibtnErweima.setEnabled(false);
+            binding.btnDel.setEnabled(false);
             ToastUtil.showToast("获取信息编号失败");
             return;
         }
-        InfoEntity infoEntity = DBInterface.instance().queryInfobyUniqueId(sn);
+        infoEntity = DBInterface.instance().queryInfoByUniqueId(sn);
         if (infoEntity != null) {
             binding.tvInfoId.setText(infoEntity.getSn());
             if (!StringUtil.isEmpty(infoEntity.getCs_Mobile())) {
@@ -99,6 +110,7 @@ public class InfoDetailActivity extends BasicActivity {
             }
         } else {
             ToastUtil.showToast("找不到该信息，信息编号："+sn);
+            this.onBackPressed();
         }
 
     }

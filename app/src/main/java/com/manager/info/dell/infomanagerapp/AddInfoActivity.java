@@ -16,6 +16,7 @@ import rx.functions.Action1;
 public class AddInfoActivity extends BasicActivity {
     private ActivityAddInfoBinding binding;
     private String infoId;
+    private InfoEntity infoEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class AddInfoActivity extends BasicActivity {
         if (bundle != null) {
             infoId = bundle.getString(ConstantUtil.INFO_SN);
             if (!StringUtil.isEmpty(infoId)) {
-                InfoEntity infoEntity = DBInterface.instance().queryInfobyUniqueId(infoId);
+                infoEntity = DBInterface.instance().queryInfoByUniqueId(infoId);
                 if (infoEntity != null) {
                     binding.editInfoId.setText(infoEntity.getSn());
                     if (!StringUtil.isEmpty(infoEntity.getCs_Mobile())) {
@@ -83,12 +84,15 @@ public class AddInfoActivity extends BasicActivity {
     private boolean saveInfo() {
         String sn = binding.editInfoId.getText().toString();
         if (StringUtil.isEmpty(sn)) {
-            ToastUtil.showToast("保存事变，编号不能为空");
+            ToastUtil.showToast("保存失败，编号不能为空");
             return false;
         }
-        InfoEntity infoEntity = new InfoEntity();
+        if (infoEntity == null) {
+            infoEntity = new InfoEntity();
+        }
         try {
-            infoEntity.setSn(sn);
+            infoId = sn;
+            infoEntity.setSn(infoId);
             infoEntity.setCs_Mobile(binding.editCsMobile.getText().toString());
             infoEntity.setCs_Name(binding.editCsName.getText().toString());
             infoEntity.setDescription(binding.editDescription.getText().toString());
@@ -97,6 +101,7 @@ public class AddInfoActivity extends BasicActivity {
             DBInterface.instance().insertOrUpdateInfo(infoEntity);
         } catch (Exception e) {
             ToastUtil.showToast("保存失败，" + e.toString());
+            onBackPressed();
             return false;
         }
         return true;

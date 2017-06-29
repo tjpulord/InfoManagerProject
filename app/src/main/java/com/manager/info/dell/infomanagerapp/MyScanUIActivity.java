@@ -59,7 +59,8 @@ public class MyScanUIActivity extends BasicActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.icon_light:
-                CodeUtils.isLightEnable(!isOpen);
+                isOpen = !isOpen;
+                CodeUtils.isLightEnable(isOpen);
                 break;
             case R.id.icon_picture:
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);

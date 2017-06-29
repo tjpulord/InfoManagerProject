@@ -20,7 +20,7 @@
         app:inner_corner_color="@color/result_points"
         app:inner_corner_length="30dp"
         app:inner_corner_width="5dp"
-        app:inner_scan_bitmap="@color/grgray"
+        app:inner_scan_bitmap="@drawable/scan_image"
         app:inner_scan_speed="10"
         app:inner_scan_iscircle="false"
         />

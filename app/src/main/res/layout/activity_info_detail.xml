@@ -131,12 +131,12 @@
             android:layout_marginLeft="8dp" />
 
         <Button
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_del"
             android:layout_width="100dp"
             android:layout_height="46dp"
             android:layout_marginBottom="32dp"
-            android:layout_marginLeft="16dp"
-            android:text="返回"
+            android:layout_marginStart="16dp"
+            android:text="删除"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -144,18 +144,18 @@
             android:id="@+id/btn_edit"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="编辑"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btn_cancel"
-            app:layout_constraintLeft_toRightOf="@+id/btn_cancel" />
+            android:layout_marginStart="16dp"
+            android:text="@string/edit"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_del"
+            app:layout_constraintLeft_toRightOf="@+id/btn_del" />
 
         <Button
-            android:id="@+id/btn_erweima"
+            android:id="@+id/btn_cancel"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="二维码"
+            android:text="@string/go_back"
             app:layout_constraintBaseline_toBaselineOf="@+id/btn_edit"
             app:layout_constraintLeft_toRightOf="@+id/btn_edit"
             app:layout_constraintRight_toRightOf="parent" />
@@ -163,13 +163,24 @@
         <ImageView
             android:id="@+id/iv_erweima"
             android:layout_width="350dp"
-            android:layout_height="440dp"
-            android:visibility="gone"
+            android:layout_height="400dp"
             android:background="@color/grgray"
+            android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:srcCompat="@mipmap/ic_launcher"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <ImageView
+            android:id="@+id/ibtn_erweima"
+            android:layout_width="104dp"
+            android:layout_height="96dp"
+            android:src="@drawable/icon_ma"
+            android:scaleType="fitXY"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="150dp" />
+            android:layout_marginBottom="100dp" />
     </android.support.constraint.ConstraintLayout>
 </layout>

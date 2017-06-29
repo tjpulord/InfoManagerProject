@@ -73,7 +73,7 @@ public class DBInterface {
     }
 
     // 查询信息
-    public InfoEntity queryInfobyUniqueId(String sn) {
+    public InfoEntity queryInfoByUniqueId(String sn) {
         InfoEntityDao dao = getWritableSession().getInfoEntityDao();
         List<InfoEntity> res = dao.queryBuilder().where(InfoEntityDao.Properties.Sn.eq(sn)).build().list();
 
@@ -86,5 +86,11 @@ public class DBInterface {
     public List<InfoEntity> queryAllInformations() {
         InfoEntityDao dao = getWritableSession().getInfoEntityDao();
         return dao.queryBuilder().build().list();
+    }
+
+    // 删除信息
+    public void deleteInfoByUniqueId(Long sid) {
+        InfoEntityDao dao = getWritableSession().getInfoEntityDao();
+        dao.deleteByKey(sid);
     }
 }

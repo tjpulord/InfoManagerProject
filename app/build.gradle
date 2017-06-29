@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
@@ -8,8 +10,8 @@ android {
         applicationId "com.manager.info.dell.infomanagerapp"
         minSdkVersion 22
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode Integer.valueOf(new SimpleDateFormat("yyMMddHHmm").format(new Date()))
+        versionName "0.0.1." + new SimpleDateFormat("yyMMddHHmm").format(new Date())
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -23,7 +25,12 @@ android {
     dataBinding {
         enabled = true
     }
+    android.applicationVariants.all { variant ->
+        def file = variant.outputs[0].outputFile
+        variant.outputs[0].outputFile = new File(file.parent, file.name.replace(".apk", "_" + defaultConfig.versionName + ".apk"))
+    }
 }
+
 
 greendao {
     daoPackage 'com.manager.info.db'

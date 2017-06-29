@@ -69,5 +69,12 @@ public class CreateInfoActivity extends BasicActivity {
                 jumpActivity(getApplicationContext(), AddInfoActivity.class);
             }
         });
+
+        InjectUtils.clicks(binding.tvBack, new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                onBackPressed();
+            }
+        });
     }
 }
